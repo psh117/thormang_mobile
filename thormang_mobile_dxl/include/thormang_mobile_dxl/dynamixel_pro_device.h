@@ -1,3 +1,6 @@
+#ifndef DYNAMIXEL_PRO_DEVICE_H_
+#define DYNAMIXEL_PRO_DEVICE_H_
+
 // Control table address
 #define ADDR_PRO_MODEL_NUMBER           0       // 2
 #define ADDR_PRO_OPERATING_MODE         11      // 1
@@ -26,7 +29,6 @@ enum MODEL_NAME { H42_20_S300_R = 51200,
                   H54_100_S500_R = 53768,
                   H54_200_S500_R = 54024 };
 
-enum MOTOR_NAME {LEFT_WHEEL = 0, RIGHT_WHEEL, LIDAR_MOTOR, MOTOR_NUM};
 
 struct motor_device
 {
@@ -102,3 +104,4 @@ struct motor_device
     }
 };
 
+#endif // DYNAMIXEL_PRO_DEVICE_H_
