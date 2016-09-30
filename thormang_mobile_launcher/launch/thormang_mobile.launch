@@ -1,0 +1,7 @@
+<launch>
+	<node name="thormang_mobile_dxl_node" pkg="thormang_mobile_dxl" type="thormang_mobile_dxl_node" />
+	<node name="thormang_mobile_joy_node" pkg="thormang_mobile_joy" type="thormang_mobile_joy_node" />
+	<node name="joy_node" pkg="joy" type="joy_node" />
+	<include file="$(find thormang_mobile_lidar)/launch/lidar.launch" />
+	<include file="$(find thormang_mobile_description)/launch/display.launch" />
+</launch>

@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 
     motor[LIDAR_MOTOR].id = 18;
     motor[LIDAR_MOTOR].mode = OP_POSITION;
-    motor[LIDAR_MOTOR].joint_name = "lidar_joint";
+    motor[LIDAR_MOTOR].joint_name = "neck_lidar_joint";
     motor[LIDAR_MOTOR].offset_position = -27.5 * DEG2RAD;
 
     // ROS connectivity
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     if(dxlAdaptor.initPort(3000000) == -1) return -1;
 
     // Model get
-    if(dxlAdaptor.getMode() == -1) return -1;
+    if(dxlAdaptor.getModel() == -1) return -1;
 
     // Torque ON!
     dxlAdaptor.torqueOn(1);

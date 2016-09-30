@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(thormang_mobile_joy)
+project(thormang_mobile_launcher)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  sensor_msgs
+  roslaunch
 )
 
 ## System dependencies are found with CMake's conventions
@@ -66,7 +65,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   sensor_msgs
+#   std_msgs  # Or other packages containing msgs
 # )
 
 ################################################
@@ -100,8 +99,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES thormang_mobile_joy
-#  CATKIN_DEPENDS roscpp sensor_msgs
+#  LIBRARIES thormang_mobile_launcher
+#  CATKIN_DEPENDS roslaunch
 #  DEPENDS system_lib
 )
 
@@ -117,26 +116,26 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(thormang_mobile_joy
-#   src/${PROJECT_NAME}/thormang_mobile_joy.cpp
+# add_library(thormang_mobile_launcher
+#   src/${PROJECT_NAME}/thormang_mobile_launcher.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(thormang_mobile_joy ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(thormang_mobile_launcher ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(thormang_mobile_joy_node src/thormang_mobile_joy_node.cpp)
+# add_executable(thormang_mobile_launcher_node src/thormang_mobile_launcher_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(thormang_mobile_joy_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(thormang_mobile_launcher_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(thormang_mobile_joy_node
-  ${catkin_LIBRARIES}
-)
+# target_link_libraries(thormang_mobile_launcher_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -153,7 +152,7 @@ target_link_libraries(thormang_mobile_joy_node
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS thormang_mobile_joy thormang_mobile_joy_node
+# install(TARGETS thormang_mobile_launcher thormang_mobile_launcher_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -178,12 +177,10 @@ target_link_libraries(thormang_mobile_joy_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_thormang_mobile_joy.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_thormang_mobile_launcher.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
-SET(CMAKE_BUILD_TYPE Release)

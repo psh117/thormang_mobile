@@ -1,0 +1,6 @@
+<package>
+  <description brief="thormang_mobile_description">thormang_mobile_description</description>
+  <depend package="gazebo" />
+  <author>Jimin Lee</author>
+  <license>BSD</license>
+</package>

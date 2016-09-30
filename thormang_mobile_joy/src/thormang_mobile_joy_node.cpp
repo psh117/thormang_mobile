@@ -8,6 +8,8 @@
 using namespace std;
 ros::Publisher jointPub;
 
+enum button_map {BTN_A = 0, BTN_B, BTN_X, BTN_Y, BTN_L1, BTN_R1, BTN_BACK, BTN_START, BTN_HOME, BTN_LSTICK, BTN_RSTICK};
+
 void joyCallback(const sensor_msgs::JoyConstPtr& msg)
 {
     const double y_axis_speed = M_PI / 2; // 90 deg / s
@@ -21,6 +23,9 @@ void joyCallback(const sensor_msgs::JoyConstPtr& msg)
     double left_wheel_velocity = left_y * y_axis_speed - right_x * x_axis_speed;
     double right_wheel_velocity = -(left_y * y_axis_speed + right_x * x_axis_speed);
 
+    if(fabs(left_wheel_velocity) < 0.2) left_wheel_velocity = 0;
+    if(fabs(right_wheel_velocity) < 0.2) right_wheel_velocity = 0;
+
     sensor_msgs::JointState jointMsg;
     jointMsg.name.push_back(string("left_wheel_joint"));
     jointMsg.velocity.push_back(left_wheel_velocity);
@@ -30,6 +35,18 @@ void joyCallback(const sensor_msgs::JoyConstPtr& msg)
 
     jointMsg.position.resize(2);
 
+    if(msg->buttons[BTN_A])
+    {
+        jointMsg.name.push_back(string("neck_lidar_joint"));
+        jointMsg.velocity.push_back(0.785398);
+        jointMsg.position.push_back(1.570796327);
+    }
+    else if (msg->buttons[BTN_B])
+    {
+        jointMsg.name.push_back(string("neck_lidar_joint"));
+        jointMsg.velocity.push_back(0.785398);
+        jointMsg.position.push_back(-1.570796327);
+    }
     jointPub.publish(jointMsg);
 
 }

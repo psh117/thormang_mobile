@@ -48,7 +48,7 @@ class ThormangMobileJointROS
 public:
     ThormangMobileJointROS(ros::NodeHandle &nh, motor_device *motorDevPtr, int motorNum) : motorDevPtr_(motorDevPtr), motorNum_(motorNum)
     {
-        jointPub_ = nh.advertise<sensor_msgs::JointState>("joint_state", 1);
+        jointPub_ = nh.advertise<sensor_msgs::JointState>("joint_states", 1);
         jointSub_ = nh.subscribe("joint_set", 1, &ThormangMobileJointROS::jointCallback, this);
         for(int i=0; i<motorNum_; i++)
         {
@@ -66,6 +66,9 @@ public:
             jointMsg_.velocity[i] = motorDevPtr_[i].present_velocity;
             jointMsg_.effort[i] = motorDevPtr_[i].present_current;
         }
+        static int cnts = 0;
+        jointMsg_.header.seq = cnts++;
+        jointMsg_.header.stamp = ros::Time::now();
 
         jointPub_.publish(jointMsg_);
     }

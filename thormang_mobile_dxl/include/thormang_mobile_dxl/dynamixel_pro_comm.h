@@ -15,17 +15,13 @@
 
 class DynamxelProAdaptor
 {
-
-
     dynamixel::PortHandler *portHandler_;
     dynamixel::PacketHandler *packetHandler2_;
     motor_device *motor_;
     const int motorNum_;
 
-
     dynamixel::GroupSyncWrite *groupSyncWrite_;
     dynamixel::GroupSyncRead *groupSyncRead_;
-
 
 public:
     DynamxelProAdaptor(const char* dev, motor_device* motor, int motorNum) :
@@ -69,7 +65,7 @@ public:
         return 0;
     }
 
-    int getMode()
+    int getModel()
     {
         for(int i=0; i<motorNum_; i++)
         {
