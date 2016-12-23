@@ -164,7 +164,7 @@
     </inertial>
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0 0 -0.0135"
         rpy="0 0 0" />
 
       <geometry>
@@ -178,12 +178,15 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
+        xyz="0 0 -0.0135"
         rpy="0 0 0" />
 	<geometry>
 	  <box size="0.062 0.062 0.087"/>
 	</geometry>
     </collision>
+  </link>
+  <link
+    name="neck_lidar_laser">
   </link>
   <joint
     name="neck_lidar_joint"

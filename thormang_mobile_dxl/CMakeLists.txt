@@ -6,7 +6,8 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
   std_msgs
-)catkin_package(
+)
+catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES thormang_mobile_dxl
 #  CATKIN_DEPENDS dynamixel_sdk geometry_msgs roscpp std_msgs

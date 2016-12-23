@@ -5,9 +5,10 @@
   <param name="robot_description" textfile="$(find thormang_mobile_description)/robots/thormang_mobile.URDF" />
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
-    <param name="publish_frequency" type="double" value="100.0" />
+    <param name="publish_frequency" type="double" value="200.0" />
     <remap from="/joint_states" to="/thormang_mobile/joint_states"/>
   </node>
   <node pkg="tf" type="static_transform_publisher" name="fake_localize" args="0 0 1.1 0 0 0 1 map base_link 10" />
+  <node pkg="tf" type="static_transform_publisher" name="fake_localize2" args="0 0 0 0 0 0 1 camera base_link 10" />
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find thormang_mobile_description)/urdf.rviz" />
 </launch>

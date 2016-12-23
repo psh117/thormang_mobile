@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(thormang_mobile_lidar)
+project(lidar_calibration)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -11,7 +11,6 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   std_msgs
   tf
-  laser_geometry
 )
 
 ## System dependencies are found with CMake's conventions
@@ -105,7 +104,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES thormang_mobile_lidar
+#  LIBRARIES lidar_calibration
 #  CATKIN_DEPENDS geometry_msgs pcl_ros roscpp sensor_msgs std_msgs tf
 #  DEPENDS system_lib
 )
@@ -122,30 +121,26 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(thormang_mobile_lidar
-#   src/${PROJECT_NAME}/thormang_mobile_lidar.cpp
+# add_library(lidar_calibration
+#   src/${PROJECT_NAME}/lidar_calibration.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(thormang_mobile_lidar ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(lidar_calibration ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(thormang_mobile_lidar_node src/thormang_mobile_lidar_node.cpp)
-add_executable(laser2points src/laser2points.cpp)
+# add_executable(lidar_calibration_node src/lidar_calibration_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(thormang_mobile_lidar_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(lidar_calibration_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(thormang_mobile_lidar_node
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(laser2points
-  ${catkin_LIBRARIES}
-)
+# target_link_libraries(lidar_calibration_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -162,7 +157,7 @@ target_link_libraries(laser2points
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS thormang_mobile_lidar thormang_mobile_lidar_node
+# install(TARGETS lidar_calibration lidar_calibration_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -187,11 +182,10 @@ target_link_libraries(laser2points
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_thormang_mobile_lidar.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_lidar_calibration.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-SET(CMAKE_BUILD_TYPE Release)

@@ -44,7 +44,7 @@ class LidarAssembler
 
 public:
     LidarAssembler() : nh_("/thormang_mobile"), is_left_turn_(false),
-        angle_min_error_(0.018) // 1 degree
+        angle_min_error_(0.088) // 1 degree
     {
         joint_sub_ = nh_.subscribe("joint_states", 5, &LidarAssembler::jointCallback, this);
 
@@ -55,7 +55,8 @@ public:
 
 
         joint_msg_.name.push_back(string("neck_lidar_joint"));
-        joint_msg_.velocity.push_back(0.785398);
+        //joint_msg_.velocity.push_back(0.885398);//(0.885398);
+        joint_msg_.velocity.push_back(1.2);//(0.885398);
         joint_msg_.position.push_back(0.0);
     }
 
@@ -98,11 +99,17 @@ private:
 
     void motor_trigger()
     {
-        if(is_left_turn_)
-            lidar_goal_angle_ = 1.605702912; // 90 degree
-        else
-            lidar_goal_angle_ = -1.605702912; // 90 degree
+      if(is_left_turn_)
+          lidar_goal_angle_ = 1.745329252; // 90 degree
+      else
+          lidar_goal_angle_ =  -1.745329252; // 90 degree
 
+      /*
+        if(is_left_turn_)
+            lidar_goal_angle_ = 3.141592 + 0.4618;//2*(1.570796327 + 1.570796327); // 90 degree
+        else
+            lidar_goal_angle_ = -3.141592 + 0.4632;// -1.570796327 - 1.570796327; // 90 degree
+*/
         is_left_turn_ = !is_left_turn_; // toggle
 
         turn_start_time_ = ros::Time::now();

@@ -22,7 +22,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "thormang_mobile_dxl");
     ros::NodeHandle nh("/thormang_mobile");
 
-    ros::Rate loop_rate(100);
+    ros::Rate loop_rate(200);
 
 
     // motor id setting
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     motor[LIDAR_MOTOR].id = 18;
     motor[LIDAR_MOTOR].mode = OP_POSITION;
     motor[LIDAR_MOTOR].joint_name = "neck_lidar_joint";
-    motor[LIDAR_MOTOR].offset_position = -27.5 * DEG2RAD;
+    motor[LIDAR_MOTOR].offset_position = -26.565 * DEG2RAD;
 
     // ROS connectivity
     ThormangMobileJointROS ROSComm(nh, motor, MOTOR_NUM);
@@ -55,6 +55,7 @@ int main(int argc, char **argv)
 
     // Torque ON!
     dxlAdaptor.torqueOn(1);
+    dxlAdaptor.setAcceleration(400);
     dxlAdaptor.syncReadReady();
 
     while(ros::ok())

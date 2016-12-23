@@ -107,6 +107,22 @@ public:
 
     }
 
+    void setAcceleration(int acc)
+    {
+
+        for(int i=0; i<motorNum_; i++)
+        {
+            int _comm_result = packetHandler2_->write4ByteTxRx(portHandler_,
+                                                              motor_[i].id,
+                                                              ADDR_PRO_GOAL_ACCELERATION,
+                                                              acc,
+                                                              &motor_[i].error);
+            if (_comm_result != COMM_SUCCESS)
+                packetHandler2_->printTxRxResult(_comm_result);
+        }
+
+    }
+
     void packetExchange()
     {
 

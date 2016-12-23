@@ -8,6 +8,7 @@
 #define ADDR_PRO_TORQUE_ENABLE          562                 // Control table address is different in Dynamixel model
 #define ADDR_PRO_GOAL_POSITION          596
 #define ADDR_PRO_GOAL_VELOCITY          600
+#define ADDR_PRO_GOAL_ACCELERATION      606
 #define ADDR_PRO_PRESENT_POSITION       611
 #define ADDR_PRO_PRESENT_VELOCITY       615
 
