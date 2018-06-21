@@ -1,0 +1,21 @@
+<launch>
+  <node name="urg_node" pkg="urg_node" type="urg_node" output="screen">
+    <param name="ip_address" value="192.168.0.11"/>
+    <param name="angle_min" value="-1.396263402"/>
+    <param name="angle_max" value="1.396263402"/>
+    <param name="frame_id" value="/lidar_link"/>
+    <remap from="most_intense" to="/lidar_scan"/>
+  </node>
+
+  <node type="laser_scan_assembler" pkg="laser_assembler" name="laser_scan_assembler">
+    <remap from="scan" to="/lidar_scan"/>
+    <param name="max_scans" type="int" value="2400" />
+    <param name="fixed_frame" type="string" value="base_link" />
+  </node>
+  <node type="thormang_mobile_lidar_node" pkg="thormang_mobile_lidar" name="thormang_mobile_lidar_node"/>
+  <!--node pkg="tf" type="static_transform_publisher" name="lidar_link_broadcaster" args="0 -0.030 -0.000 0 0 0 1 /neck_lidar /lidar_link 200" /-->
+  <!--node pkg="tf" type="static_transform_publisher" name="lidar_link_broadcaster" args="0 0 -0.0177448575287 -0.0076767227949 0.0051523718 0 /neck_lidar /lidar_link 200" /-->  
+  <node pkg="tf" type="static_transform_publisher" name="lidar_link_broadcaster" args="0 0 -0.0177 -0.0076767227949 0.0051523718 0 /neck_lidar /lidar_link 200" />
+  <!--node pkg="tf" type="static_transform_publisher" name="lidar_link_broadcaster" args="0 0 -0.0177 -0.0092291 0 0 /neck_lidar /lidar_link 200" /-->
+  <!--node pkg="tf" type="static_transform_publisher" name="lidar_link_broadcaster" args="0 0 0 0 0 0 1 base_link lidar_link 100" /-->
+</launch>
